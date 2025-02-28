@@ -5,10 +5,10 @@ Following cemaexecuter to create drone RemoteID detector. This first step is to 
 This was donw while Sonoff was plugged into raspberry pi 4 running DragonOS.
 https://www.youtube.com/watch?v=t3jVN2KrAtU
 
-##Installing and Running Sniffle on a Sonoff Zigbee USB Dongle (Ubuntu 22.04)
+## Installing and Running Sniffle on a Sonoff Zigbee USB Dongle (Ubuntu 22.04)
 This guide walks you through installing and running Sniffle, a BLE sniffer, on a Sonoff Zigbee USB Dongle using Ubuntu 22.04.
 
-###Step 1: Connect to Ubuntu
+### Step 1: Connect to Ubuntu
 On your Windows machine, open Command Prompt (cmd) and connect via SSH:
 
 ```
@@ -18,14 +18,14 @@ Replace <your-ip-address> with your Ubuntu machine’s IP address.
 
 Enter your Ubuntu password when prompted.
 
-###Step 2: Install Required Dependencies
+### Step 2: Install Required Dependencies
 Update your system and install all required packages:
 
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install git python3 python3-pip python3-serial python3-intelhex python3-magic cmake make gcc-arm-none-eabi -y
 ```
-###Step 3: Clone the Required Repositories
+### Step 3: Clone the Required Repositories
 Download Sniffle and the flashing tool cc2538-bsl:
 
 ```
@@ -33,7 +33,7 @@ cd ~
 git clone https://github.com/bkerler/Sniffle.git
 git clone https://github.com/JelmerT/cc2538-bsl.git
 ```
-###Step 4: Download the Sniffle Firmware
+### Step 4: Download the Sniffle Firmware
 ```
 cd ~/Sniffle/fw
 wget https://github.com/nccgroup/Sniffle/releases/download/v1.10.0/sniffle_cc1352p1_cc2652p1.hex
@@ -47,7 +47,7 @@ Verify that the file was downloaded successfully:
 ```
 ls -l sniffle_cc1352p1_cc2652p1.hex
 ```
-###Step 5: Prepare the USB Device for Flashing
+### Step 5: Prepare the USB Device for Flashing
 List all available serial devices:
 
 ```
@@ -62,7 +62,7 @@ sudo reboot
 ```
 After the system reboots, reconnect via SSH.
 
-###Step 6: Flash the Sniffle Firmware
+### Step 6: Flash the Sniffle Firmware
 Once reconnected, navigate to the cc2538-bsl directory and flash the firmware:
 
 ```
@@ -81,7 +81,7 @@ Write 104 bytes at 0x00057F980
 Verifying by comparing CRC32 calculations.
     Verified (match: 0xaf3a8c0e)
 ```
-###Step 7: Start Sniffing BLE Traffic
+### Step 7: Start Sniffing BLE Traffic
 To check if the Sniffle sniffer software is working, run:
 
 ```
@@ -97,7 +97,7 @@ To save captured BLE packets to a PCAP file (for Wireshark analysis), run:
 ```
 python3 ~/Sniffle/python_cli/sniff_receiver.py -s /dev/ttyUSB0 -o capture.pcap
 ```
-###Step 8: Verify and Troubleshoot
+### Step 8: Verify and Troubleshoot
 No packets are being captured?
 Ensure your device is in range of BLE advertisements.
 Permission errors when accessing /dev/ttyUSB0?
